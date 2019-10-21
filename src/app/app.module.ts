@@ -1,8 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {SharedModule} from './shared';
+import {CoreModule} from './core';
+import {AppComponent} from './app.component';
+import {MAT_DATE_LOCALE} from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {TaskModule} from './task/task.module';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,17 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    SharedModule,
+    CoreModule,
+    TaskModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'zh-CN'
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
