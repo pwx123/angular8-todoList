@@ -1,0 +1,48 @@
+// get TodoList
+GET http://localhost:3000/todoLists
+Content-Type: application/json
+Charset: utf-8
+
+###
+// get like TodoList
+GET http://localhost:3000/todoLists?content_like=项目三
+Content-Type: application/json
+Charset: utf-8
+
+###
+// get status TodoList
+GET http://localhost:3000/todoLists?status=1
+Content-Type: application/json
+Charset: utf-8
+
+###
+// post TodoList
+POST http://localhost:3000/todoLists
+Content-Type: application/json
+Charset: utf-8
+
+{
+  "status": 1,
+  "content": "完成项目b",
+  "createTime": "2019-10-22 09:41:22",
+  "finishTime": "",
+  "deleteTime": ""
+}
+
+###
+// patch TodoList
+PATCH http://localhost:3000/todoLists/1
+Content-Type: application/json
+Charset: utf-8
+
+{
+  "status": 2,
+  "deleteTime": "209-10-22 09:43:56"
+}
+
+###
+// delete TodoList
+DELETE http://localhost:3000/todoLists/ER-SDVO
+Content-Type: application/json
+Charset: utf-8
+

@@ -4,6 +4,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from '../app-routing.module';
 import {ServicesModule} from '../services';
 import {SharedModule} from '../shared';
+import {AppReducerModule} from '../store/reducers';
+import {AppEffectsModule} from '../store/effects';
 
 import 'hammerjs';
 
@@ -17,7 +19,9 @@ import 'hammerjs';
     SharedModule,
     ServicesModule.forRoot(),
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppReducerModule,
+    AppEffectsModule
   ],
   providers: [
     {
