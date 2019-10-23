@@ -1,0 +1,48 @@
+<div class="task-list">
+  <div class="new">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4>待办任务</h4>
+          <span>{{newTodoList.length}}</span>
+        </mat-panel-title>
+        <mat-panel-description></mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <app-task-item *ngFor="let todo of newTodoList" [todo]="todo" (updateTaskStatus)="handleUpDateStatus($event)"></app-task-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+  <div class="finish">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4>已完成任务</h4>
+          <span>{{finishTodoList.length}}</span>
+        </mat-panel-title>
+        <mat-panel-description></mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <app-task-item *ngFor="let todo of finishTodoList"
+            [todo]="todo"
+            (updateTaskStatus)="handleUpDateStatus($event)"></app-task-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+  <div class="delete">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4>已删除任务</h4>
+          <span>{{deleteTodoList.length}}</span>
+        </mat-panel-title>
+        <mat-panel-description></mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <app-task-item *ngFor="let todo of deleteTodoList"
+            [todo]="todo"
+            (updateTaskStatus)="handleUpDateStatus($event)"></app-task-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+</div>

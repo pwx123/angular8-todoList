@@ -1,4 +1,14 @@
-<p>task-home works!</p>
-<pre>
-  {{todoList$ | async | json}}
-</pre>
+<div class="task-home">
+  <div class="search">
+    <mat-form-field class="full-width">
+      <input matInput type="text" [formControl]="searchValue">
+      <mat-icon matSuffix (click)="searchValueClick()">search</mat-icon>
+    </mat-form-field>
+  </div>
+  <app-task-list [taskList]="todoList$ | async" (updateStatus)="updateStatus($event)"></app-task-list>
+  <div class="add" [ngClass]="scrollClass">
+    <button mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -31,7 +31,7 @@ Charset: utf-8
 
 ###
 // patch TodoList
-PATCH http://localhost:3000/todoLists/1
+PATCH http://localhost:3000/todoLists/3
 Content-Type: application/json
 Charset: utf-8
 

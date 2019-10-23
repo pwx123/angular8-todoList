@@ -11,11 +11,11 @@ const todoListReducer = createReducer(
     return payload;
   }),
   on(TodoListAction.searchTodoList, state => state),
+  on(TodoListAction.searchTodoListSuccess, (state, {payload}) => {
+    return payload;
+  }),
   on(TodoListAction.filterTodoList, state => state),
   on(TodoListAction.postTodoList, state => state),
-  on(TodoListAction.postTodoListSuccess, (state, {payload}) => {
-    return [...state, payload];
-  }),
   on(TodoListAction.updateTodoList, state => state)
 );
 

@@ -1,0 +1,19 @@
+<mat-list-item>
+  <mat-checkbox (change)="taskItemClick()"></mat-checkbox>
+  <div mat-line>
+    {{todo.content | sliceTime}}
+  </div>
+  <div mat-line *ngIf="todo.status === todoStatusModel.NEW && todo.createTime">
+    创建时间：{{todo.createTime | sliceTime}}
+    <div class="due" *ngIf="todo.dueTime">
+      <mat-icon class="due-time">date_range</mat-icon>
+      {{dueDate}}
+    </div>
+  </div>
+  <div mat-line *ngIf="todo.status === todoStatusModel.FINISH && todo.finishTime">
+    完成时间：{{todo.finishTime | sliceTime}}
+  </div>
+  <div mat-line *ngIf="todo.status === todoStatusModel.DELETE && todo.deleteTime">
+    删除时间：{{todo.deleteTime | sliceTime}}
+  </div>
+</mat-list-item>

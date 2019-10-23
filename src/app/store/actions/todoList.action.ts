@@ -13,9 +13,9 @@ const updateTodoList = createAction('[Task Page] UPDATE', props<{
     payload: {
       status?: TodoStatusModel;
       content?: string;
-      createTime?: Date;
-      finishTime?: Date;
-      deleteTime?: Date;
+      createTime?: string;
+      finishTime?: string;
+      deleteTime?: string;
     }
   }>()
 );

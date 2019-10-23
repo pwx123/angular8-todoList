@@ -46,8 +46,8 @@ export class TodoListService {
   }
 
 
-  update(todo: TodoModel): Observable<TodoModel> {
-    const url = `${this.config.url}/${this.domain}`;
+  update(todo): Observable<TodoModel> {
+    const url = `${this.config.url}/${this.domain}/${todo.id}`;
     return this.http.patch(url, JSON.stringify(todo), {headers: this.headers}).pipe(
       map(res => res as TodoModel)
     );

@@ -4,10 +4,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   MatButtonModule,
-  MatDialogModule
+  MatCheckboxModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule
 } from '@angular/material';
 
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import {AppPipeModule} from '../pipes';
+
 
 @NgModule({
   declarations: [
@@ -17,15 +25,29 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppPipeModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppPipeModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     ConfirmDialogComponent

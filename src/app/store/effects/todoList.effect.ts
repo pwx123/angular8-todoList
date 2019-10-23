@@ -29,6 +29,29 @@ export class TodoListEffect {
     )
   );
 
+  // @ts-ignore
+  patchTodoListEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(TodoListAction.updateTodoList),
+    // @ts-ignore
+    switchMap(val => this.service.update(val.payload)
+      .pipe(
+        map(() => TodoListAction.getTodoList()),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+  // @ts-ignore
+  searchTodoListEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(TodoListAction.searchTodoList),
+    // @ts-ignore
+    switchMap(val => this.service.search(val.payload)
+      .pipe(
+        map(todoList => TodoListAction.searchTodoListSuccess({payload: todoList as TodoModel[]})),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private service: TodoListService
