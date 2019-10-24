@@ -1,7 +1,11 @@
 <mat-list-item>
-  <mat-checkbox (change)="taskItemClick()"></mat-checkbox>
-  <div mat-line>
-    {{todo.content | sliceTime}}
+  <mat-icon class="action" *ngIf="todo.status !== todoStatusModel.NEW" (click)="changeStatusClick()">replay</mat-icon>
+  <mat-icon class="action" *ngIf="todo.status === todoStatusModel.NEW" (click)="changeStatusClick()">done</mat-icon>
+  <del mat-line *ngIf="todo.status === todoStatusModel.DELETE">
+    {{todo.content}}
+  </del>
+  <div mat-line *ngIf="todo.status !== todoStatusModel.DELETE">
+    {{todo.content}}
   </div>
   <div mat-line *ngIf="todo.status === todoStatusModel.NEW && todo.createTime">
     创建时间：{{todo.createTime | sliceTime}}

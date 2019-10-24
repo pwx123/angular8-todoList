@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {EMPTY} from 'rxjs';
-import {catchError, exhaustMap, map, switchMap} from 'rxjs/operators';
+import {catchError, exhaustMap, map, switchMap, tap} from 'rxjs/operators';
 import {TodoListService} from '../../services/todo-list.service';
 import {TodoListAction} from '../actions/todoList.action';
 import {TodoModel} from '../../models';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class TodoListEffect {
@@ -27,6 +28,18 @@ export class TodoListEffect {
         catchError(() => EMPTY)
       ))
     )
+  );
+  postSuccessTodoListEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(TodoListAction.postTodoListSuccess),
+    tap(() => {
+        this.snackBar.open('添加成功', '', {
+          duration: 2000
+        });
+      }
+    )
+    ), {
+      dispatch: false
+    }
   );
 
   // @ts-ignore
@@ -54,7 +67,8 @@ export class TodoListEffect {
 
   constructor(
     private actions$: Actions,
-    private service: TodoListService
+    private service: TodoListService,
+    private snackBar: MatSnackBar
   ) {
   }
 }

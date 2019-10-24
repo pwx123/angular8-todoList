@@ -7,6 +7,9 @@ import {TodoListAction} from '../../store/actions/todoList.action';
 import {formatTime} from '../../utils/time.util';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {MatDialog} from '@angular/material';
+import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
+import {NewTaskDialogComponent} from '../new-task/new-task-dialog.component';
 
 @Component({
   selector: 'app-task-home',
@@ -26,7 +29,8 @@ export class TaskHomeComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private store$: Store<fromRoot.State>
+    private store$: Store<fromRoot.State>,
+    private dialog: MatDialog
   ) {
     this.store$.dispatch(TodoListAction.getTodoList());
     this.todoList$ = this.store$.select(fromRoot.getTodo);
@@ -75,6 +79,45 @@ export class TaskHomeComponent implements OnInit, OnDestroy {
       // @ts-ignore
       updateValue.delteTime = formatTime(time);
     }
-    this.store$.dispatch(TodoListAction.updateTodoList({payload: updateValue}));
+    if (value.status === TodoStatusModel.NEW) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: '提示',
+          content: '确定恢复此任务吗？'
+        }
+      });
+      dialogRef.afterClosed().subscribe(res => {
+        if (res) {
+          this.store$.dispatch(TodoListAction.updateTodoList({payload: updateValue}));
+        }
+      });
+    } else {
+      this.store$.dispatch(TodoListAction.updateTodoList({payload: updateValue}));
+    }
+  }
+
+  addClick() {
+    const dialogRef = this.dialog.open(NewTaskDialogComponent, {
+      data: {
+        title: '提示'
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        let dueTime = '';
+        if (res.dueTime) {
+          dueTime = formatTime(res.dueTime);
+        }
+        const todo: TodoModel = {
+          status: TodoStatusModel.NEW,
+          content: res.content,
+          dueTime,
+          createTime: formatTime(new Date()),
+          finishTime: '',
+          deleteTime: ''
+        };
+        this.store$.dispatch(TodoListAction.postTodoList({payload: todo}));
+      }
+    });
   }
 }

@@ -31,4 +31,9 @@ export class TaskListComponent implements OnInit {
   handleUpDateStatus(value: { id: string, status: TodoStatusModel }) {
     this.updateStatus.emit(value);
   }
+
+  handleMove(srcData, dragTodo) {
+    console.log(srcData);
+    console.log(dragTodo);
+  }
 }

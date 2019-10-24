@@ -31,7 +31,7 @@ export class TaskItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  taskItemClick() {
+  changeStatusClick() {
     let status;
     switch (this.todo.status) {
       case TodoStatusModel.DELETE:

@@ -10,14 +10,14 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
     </div>
     <div mat-dialog-actions>
       <button type="button"
-          mat-raised-button
-          color="primary"
-          (click)="onClick(true)">确定
-      </button>
-      <button type="button"
           mat-dialog-close
           mat-button
           (click)="onClick(false)">取消
+      </button>
+      <button type="button"
+          mat-raised-button
+          color="primary"
+          (click)="onClick(true)">确定
       </button>
     </div>
   `,

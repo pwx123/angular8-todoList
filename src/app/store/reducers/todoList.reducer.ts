@@ -16,6 +16,9 @@ const todoListReducer = createReducer(
   }),
   on(TodoListAction.filterTodoList, state => state),
   on(TodoListAction.postTodoList, state => state),
+  on(TodoListAction.postTodoListSuccess, (state, {payload}) => {
+    return [payload, ...state];
+  }),
   on(TodoListAction.updateTodoList, state => state)
 );
 

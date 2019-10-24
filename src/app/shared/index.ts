@@ -4,17 +4,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   MatButtonModule,
-  MatCheckboxModule,
+  MatCheckboxModule, MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule
+  MatListModule, MatNativeDateModule, MatSnackBarModule
 } from '@angular/material';
 
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {AppPipeModule} from '../pipes';
+import {DirectiveModule} from '../directive';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {AppPipeModule} from '../pipes';
     FormsModule,
     ReactiveFormsModule,
     AppPipeModule,
+    DirectiveModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
@@ -33,13 +35,17 @@ import {AppPipeModule} from '../pipes';
     MatIconModule,
     MatExpansionModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AppPipeModule,
+    DirectiveModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
@@ -47,7 +53,10 @@ import {AppPipeModule} from '../pipes';
     MatIconModule,
     MatExpansionModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     ConfirmDialogComponent

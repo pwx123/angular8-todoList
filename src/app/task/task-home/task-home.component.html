@@ -1,13 +1,13 @@
 <div class="task-home">
   <div class="search">
     <mat-form-field class="full-width">
-      <input matInput type="text" [formControl]="searchValue">
+      <input matInput type="text" [formControl]="searchValue" (keydown.enter)="searchValueClick()">
       <mat-icon matSuffix (click)="searchValueClick()">search</mat-icon>
     </mat-form-field>
   </div>
   <app-task-list [taskList]="todoList$ | async" (updateStatus)="updateStatus($event)"></app-task-list>
   <div class="add" [ngClass]="scrollClass">
-    <button mat-fab color="primary">
+    <button mat-fab color="primary" (click)="addClick()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
